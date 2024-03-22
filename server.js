@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const errorHandler = require('_middleware/error-handler');
+const productsRouter = require('./products/products.controllers');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -10,6 +11,7 @@ app.use(cors());
 
 // api routes
 app.use('/users', require('./users/users.controllers'));
+app.use('/products', productsRouter);
 
 // global error handler
 app.use(errorHandler);
